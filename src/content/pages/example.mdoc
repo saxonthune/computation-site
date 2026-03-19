@@ -1,0 +1,40 @@
+---
+title: Example Page
+permalink: example
+redirectFrom: []
+description: Demonstrates Markdoc tags
+published: 2026-03-10
+---
+
+# Example Page
+
+Regular markdown works as expected. Below is a two-column layout:
+
+{% columns %}
+{% column %}
+
+## Left Column
+
+- Item one
+- Item two
+- Item three
+
+{% /column %}
+{% column %}
+
+## Right Column
+
+This side has prose instead of a list. You can mix and match content types within columns.
+
+{% /column %}
+{% /columns %}
+
+## Back to Single Column
+
+After the columns tag closes, we're back to normal flow.
+
+{% section title="A Titled Section" %}
+
+This content appears under a bold section header. Useful for the table of contents structure.
+
+{% /section %}

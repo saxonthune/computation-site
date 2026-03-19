@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Libre Baskerville', Georgia, serif;
+}
+
+body {
+  background-color: white;
+  background-image:
+    linear-gradient(to bottom, white calc(100% - 650px), transparent calc(100% - 200px)),
+    url('/bg.png');
+  background-position: top, center bottom;
+  background-size: 100% 100%, 100% auto;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: scroll, scroll;
+}
+
+:root.dark body {
+  background-color: #0d0e0f;
+  background-image:
+    linear-gradient(to bottom, #0d0e0f calc(100% - 650px), transparent calc(100% - 200px)),
+    url('/bg.png');
+}

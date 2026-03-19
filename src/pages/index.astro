@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+const allPages = await getCollection('pages');
+const pageMap = Object.fromEntries(allPages.map(p => [p.data.permalink, p]));
+
+// Table of contents structure: [permalink, display title]
+const toc = {
+  intro: [
+    ['preface', 'Preface'],
+    ['the-saaspocalypse', 'The SaaSpocalypse'],
+  ],
+  'The Reality of Software Development': [
+    ['what-is-ai', 'What is AI?'],
+    ['what-is-software', 'What is Software?'],
+    ['artifact-driven-development', 'Artifact-Driven Development'],
+    ['good-code-is-simple', 'Good Code is Simple'],
+  ],
+  'The Art of Spec Driven Development': [
+    ['specs-and-ai', 'Specs and AI'],
+    ['keep-your-dogma-out-of-my-spec', 'Keep your Dogma out of my Spec!'],
+    ['two-sources-of-truth', 'Two Sources of Truth'],
+    ['transformation-distillation-enrichment', 'Transformation, Distillation, Enrichment'],
+    ['code-maps', 'Code Maps'],
+    ['towards-software-design', 'Towards Software Design'],
+  ],
+};
+---
+<Base title="Computation">
+  <h1 class="font-heading text-5xl font-bold mb-3 tracking-tight text-center dark:text-dark-heading">Computation</h1>
+  <p class="text-center text-sm text-gray-400 dark:text-dark-muted mb-16 italic">Software Design, and Assembly Line Software</p>
+
+  {Object.entries(toc).map(([section, entries]) => (
+    <>
+      {section !== 'intro' && <h2 class="font-heading text-2xl font-bold mb-6 dark:text-dark-heading">{section}</h2>}
+      <ul class="space-y-3 mb-14 pl-4">
+        {entries.map(([permalink, title]) => {
+          const page = pageMap[permalink];
+          if (page && !page.data.stub) {
+            return <li><a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline">{title}</a></li>;
+          } else if (page?.data.stub) {
+            return <li class="text-gray-400 dark:text-dark-muted">{title} <a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline text-xs">(·)</a></li>;
+          } else {
+            return <li class="text-gray-400 dark:text-dark-muted">{title}</li>;
+          }
+        })}
+      </ul>
+    </>
+  ))}
+
+  <hr class="my-6 border-gray-200 dark:border-gray-800" />
+
+  <div class="flex items-center justify-center gap-4">
+    <p class="text-sm text-gray-400 dark:text-dark-muted">
+      <a href="/about" class="text-accent-light dark:text-accent-dark hover:underline">About Me</a>
+      <span class="mx-2">&middot;</span>
+      <a href="/blog" class="text-accent-light dark:text-accent-dark hover:underline">Blog</a>
+      <span class="ml-2">&middot;</span>
+    <ThemeToggle />
+    </p>
+  </div>
+</Base>

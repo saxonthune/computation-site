@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" fill="none">
+  <style>
+    svg {
+      --fg: #111827;
+      --fg-muted: #6b7280;
+      --accent: #2563eb;
+      --gap: #9ca3af;
+      --gap-bg: #f1f5f9;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fg: #e8e2d6;
+        --fg-muted: #6b6560;
+        --accent: #d4a647;
+        --gap: #6b6560;
+        --gap-bg: #161412;
+      }
+    }
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .label { font-size: 12px; font-weight: 600; fill: var(--fg); text-anchor: middle; }
+    .gap-q { font-size: 26px; font-weight: 700; fill: var(--gap); text-anchor: middle; }
+  </style>
+
+  <!-- Pipeline arrow -->
+  <line x1="60" y1="188" x2="325" y2="188"
+        stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+  <line x1="325" y1="188" x2="475" y2="188"
+        stroke="var(--gap)" stroke-width="4" stroke-dasharray="8 5"/>
+  <line x1="475" y1="188" x2="738" y2="188"
+        stroke="var(--accent)" stroke-width="4"/>
+  <polygon points="742,188 732,182 732,194" fill="var(--accent)"/>
+
+  <!-- Gap region -->
+  <rect x="332" y="32" width="136" height="140" rx="8"
+        fill="var(--gap-bg)" stroke="var(--gap)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="400" y="115" class="gap-q">?</text>
+
+  <!-- Connectors to pipeline -->
+  <line x1="100" y1="140" x2="100" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="260" y1="140" x2="260" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="540" y1="140" x2="540" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="700" y1="140" x2="700" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Product Manager -->
+  <g transform="translate(100,67)">
+    <circle r="9" cy="-13" stroke="var(--accent)" stroke-width="2"/>
+    <path d="M-13,12 C-13,-1 -7,-6 0,-6 C7,-6 13,-1 13,12"
+          stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="100" y="112" class="label">Product</text>
+  <text x="100" y="127" class="label">Manager</text>
+
+  <!-- Product Strategy -->
+  <g transform="translate(260,62)">
+    <path d="M-11,-15 h15 l7,7 v24 h-22 z"
+          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M4,-15 v7 h7"
+          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
+    <line x1="-5" y1="-1" x2="5" y2="-1" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+    <line x1="-5" y1="6" x2="5" y2="6" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+    <line x1="-5" y1="13" x2="1" y2="13" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+  </g>
+  <text x="260" y="112" class="label">Product</text>
+  <text x="260" y="127" class="label">Strategy</text>
+
+  <!-- Engineer -->
+  <g transform="translate(540,67)">
+    <circle r="9" cy="-13" stroke="var(--accent)" stroke-width="2"/>
+    <path d="M-13,12 C-13,-1 -7,-6 0,-6 C7,-6 13,-1 13,12"
+          stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="540" y="112" class="label">Engineer</text>
+
+  <!-- Source Code -->
+  <g transform="translate(700,62)">
+    <path d="M-11,-15 h15 l7,7 v24 h-22 z"
+          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M4,-15 v7 h7"
+          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
+    <line x1="-5" y1="-1" x2="5" y2="-1" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+    <line x1="-5" y1="6" x2="5" y2="6" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+    <line x1="-5" y1="13" x2="1" y2="13" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+  </g>
+  <text x="700" y="112" class="label">Source</text>
+  <text x="700" y="127" class="label">Code</text>
+</svg>

@@ -1,0 +1,81 @@
+Why do we write software?
+Not for the fun of it -- if Uber discovered it was cheaper to operate with telephone operators and dispatchers, they would unplug their servers in an instant.
+Instead, they use software because it is cheaper and more consistent than any other option.
+Software only exists to implement a product.
+
+This is true for any project that uses software. An open-source project makes claims about what it can do, either on a website or documentation; a video game markets itself on a digital storefront. In all cases, users consume a product, and the product is implemented by software. Without a product, there is no software.
+
+We can imagine **perfect software**, which fulfills its product with perfect fidelity.
+However, the real-world picture is not so pretty.
+Features are missing, bugs are everywhere, and the underlying code is indecipherable. 
+AI presents an opportunity not just to write code faster, but to overhaul broken processes that sink organizations into stagnancy.
+But to get there, we need to understand the causes of imperfect software.
+
+### Overengineering: The Root of All Evil?
+
+It's not easy to be a software engineer. The job demands extensive technical know-how, from inventories of architectural solutions (AWS offers [264 products](https://aws.amazon.com/products/?nc2=h_prod) at the time of writing), down to exacting line-by-line syntactical rules.
+With all this information in their head, an engineer can easily lose sight of the product, becoming focused solely on technology -- technology for the sake of technology.
+This is a disaster, the result of which is overengineered software.
+
+Here's an example.
+Imagine a business having two distinct products after an acquisition; subscribing to product A grants access to product B automatically, but because A and B are provided by different software systems, there is a manual process to cancel product B when product A is cancelled.
+The business asks an engineering team to automate the process.
+Because cross system communication is known to be difficult, the team makes an overengineered solution: message queues, parallelized database writes, guards against edge cases, legacy code adapters, you name it.
+It is surely the greatest engineering marvel of all time.
+
+The problem is that the business only needs to process five accounts per day. The eighth wonder of the world wasn't really necessary to build, and from here, the problems compound.
+Overengineered code is brittle, meaning changes are slow, expensive, and likely to cause whack-a-mole process of chasing bugs (which is also expensive).
+The business needs to make changes to their software-based automation, but the original engineers no longer work at the company?
+Good luck with that!
+
+Overengineered software starts inside of code, but creeps into business processes. 
+Teams spend vast amounts of time on each project, fussing with overengineered code.
+This invites project management techniques, oversight, and more processes.
+If you work on a team practicing scrum, think about how your team operates on the last day of the sprint, and ask yourself if the scramble to close tickets gets in the way of the product you're trying to create.
+The point is that bad practices and their mitigations multiply, and the original product is eclipsed behind a giant, tangled ball of process.
+At first only the engineer missed the product, but now entire organizations are missing it too.
+It would appear that overengineering is in fact the root of all evil.
+
+### The Product Gap
+
+Let's approach the problem from another angle. Imagine a 'product pipeline', where people work to implement a real, living product with software behind it.
+
+< diagram. left to right, an arrow across the bottom. Leftmost side is 'outside of team', then a 'product owner' then a spacing for 'technical product' which is missing, then an engineer, then finally the rightmost side is source code. >
+
+We can place people into two broad categories: product and technology.
+Product people must interpret conflicting signals -- customer feedback, directives from the C suite, input from their engineers, movements of competing firms, broader market trends, as well as constraints due to budget and legacy code -- and then channel these signals into strategic decisions.
+Engineers turn these product decisions into real, usable software by writing, testing, and deploying source code.
+Simple, right?
+
+The product gap is the distance between product strategy and source code.
+The best software teams are able to create good software out of strategy documents, software that closely matches the stated strategy.
+For the rest of us, the end result is source code that is overengineered -- the degree to which depends on the culture of the team and its organization.
+
+The missing link is product design: picture flowcharts and diagrams; not enums, but enumerations: types of users, subscriptions, and product tiers.
+Imagine business entities (nouns) that interact according to rules (verbs).
+For example, consider a business that offers [tax and payroll services for household employers](https://care.com/homepay).
+We can imagine entities, such as employers and employees, paychecks and withholding options.
+Next, we can imagine rules describing how these entities interact, like "what is the deadline for an employer to change their employee's withholding options on a given paycheck?"
+Every business has these entities and rules, but not every team uses them explicitly.
+
+For the average software team, the product gap is nearly invisible.
+To create source code, the team's engineers implicitly embed product design decisions into the code.
+This causes two large problems.
+First, we know that engineers are preoccupied with technology; instead of reflecting the product strategy, their implicit design decisions absorb the character of technology.
+Second, this is the basis of the overengineering feedback loop: the only people who can understand the product design are engineers, only engineers will make future product decisions, and those decisions will be embedded into overengineered source code.
+Contrary to what engineers might think, their product manager teammates are perfectly capable of making design decisions, if only they didn't have to read thousands of lines of convoluted source code to bring themselves up to speed.
+Finally, we have a deeper understanding of the problem -- overengineering may be the root of all evil, but the root of overengineering is the product gap.
+
+### AI Bridges the Product Gap
+
+Why does the product gap exist?
+The first problem lies in team personnel: bridging the gap requires both empathetic, human-centered design skills, as well as rigorous analytical ability; it is rare to find one person who possesses both skill sets.
+The second problem is technological: product documentation consumes large amounts of time, and it will become stale unless even more time is spent keeping it up to date.
+There will always be a temptation to push product vision directly into code. 
+
+AI can help solve both of these problems.
+While it cannot replace people, but it can help people maintain systems of documentation that breaks the leap across the product gap into baby steps.
+Such a system aids communication, reveals ambiguities, and reveals flaws before they make it into source code. 
+And while you or I may find it tedious to maintain a building code's worth of product decisions, tedium is the exactly problem AI was built to solve.
+
+For any business that develop software-based products, the challenge before them is to build AI-powered processes that result in better software, and thus better products. Startups and other young firms will be the first to get here. Incumbent firms risk falling victim to the SaaSpocalypse.

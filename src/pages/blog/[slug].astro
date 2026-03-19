@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Prose from '../../layouts/Prose.astro';
+
+export async function getStaticPaths() {
+  const dispatches = await getCollection('blog');
+  return dispatches.map((entry) => {
+    const d = entry.data.date;
+    const yy = String(d.getUTCFullYear()).slice(2);
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(d.getUTCDate()).padStart(2, '0');
+    const name = entry.id.replace(/\.mdoc$/, '');
+    const slug = `${yy}${mm}${dd}-${name}`;
+    return { params: { slug }, props: { entry } };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Prose title={entry.data.title}>
+  <p class="not-prose text-xs text-gray-400 dark:text-dark-muted mb-8"><a href="/blog" class="hover:text-gray-600 dark:hover:text-dark-heading">&larr; blog</a></p>
+  <h1 class="font-heading dark:text-dark-heading">{entry.data.title}</h1>
+  <p class="text-sm text-gray-500 dark:text-dark-muted">{fmt(entry.data.date)}</p>
+  <Content />
+  <hr class="my-8 border-gray-200 dark:border-gray-800" />
+  <nav class="not-prose flex gap-4 text-sm text-gray-400 dark:text-dark-muted">
+    <a href="#top" class="hover:text-gray-600 dark:hover:text-dark-heading">to top</a>
+    <a href="/blog" class="hover:text-gray-600 dark:hover:text-dark-heading">blog</a>
+    <a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">main</a>
+  </nav>
+</Prose>

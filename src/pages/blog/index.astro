@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ThemeToggle from '../../components/ThemeToggle.astro';
+
+const dispatches = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const toSlug = (entry: any) => {
+  const d = entry.data.date;
+  const yy = String(d.getUTCFullYear()).slice(2);
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  const name = entry.id.replace(/\.mdoc$/, '');
+  return `${yy}${mm}${dd}-${name}`;
+};
+---
+<Base title="Blog — Computation">
+  <p class="text-xs text-gray-400 dark:text-dark-muted mb-8"><a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">&larr; contents</a></p>
+  <h1 class="font-heading text-4xl font-bold mb-10 tracking-tight dark:text-dark-heading">Blog</h1>
+
+  <ul class="space-y-4">
+    {dispatches.map((entry) => (
+      <li>
+        <a href={`/blog/${toSlug(entry)}`} class="text-accent-light dark:text-accent-dark hover:underline">{entry.data.title}</a>
+        <span class="text-sm text-gray-400 dark:text-dark-muted ml-2">{fmt(entry.data.date)}</span>
+      </li>
+    ))}
+  </ul>
+
+  <hr class="my-8 border-gray-200 dark:border-gray-800" />
+  <div class="flex items-center gap-4 text-sm text-gray-400 dark:text-dark-muted">
+    <a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">main</a>
+    <a href="/feed.xml" class="hover:text-gray-600 dark:hover:text-dark-heading">rss</a>
+    <ThemeToggle />
+  </div>
+</Base>
