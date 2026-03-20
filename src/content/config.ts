@@ -9,7 +9,6 @@ const pages = defineCollection({
     description: z.string().optional(),
     published: z.coerce.date(),
     edited: z.coerce.date().optional(),
-    earlyAccess: z.boolean().default(false),
     stub: z.boolean().default(false),
     version: z.number().optional(),
   }),

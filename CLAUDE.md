@@ -33,7 +33,6 @@ Articles are `.mdoc` files in `src/content/pages/`. Required frontmatter:
 title: "Article Title"
 published: 2026-03-10       # required
 edited: 2026-03-15          # optional, shown if present
-earlyAccess: true            # optional, shows disclaimer banner
 description: "Short desc"   # optional
 version: 1                  # optional
 ---

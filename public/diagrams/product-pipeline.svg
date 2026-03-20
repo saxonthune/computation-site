@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 0 890 220" fill="none">
   <style>
     svg {
       --fg: #111827;
@@ -18,69 +18,86 @@
     }
     text { font-family: system-ui, -apple-system, sans-serif; }
     .label { font-size: 12px; font-weight: 600; fill: var(--fg); text-anchor: middle; }
-    .gap-q { font-size: 26px; font-weight: 700; fill: var(--gap); text-anchor: middle; }
+    .source { font-size: 10px; fill: var(--fg-muted); text-anchor: end; font-style: italic; }
+    .gap-q { font-size: 28px; font-weight: 700; fill: var(--gap); text-anchor: middle; }
   </style>
 
-  <!-- Pipeline arrow -->
-  <line x1="60" y1="188" x2="325" y2="188"
-        stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
-  <line x1="325" y1="188" x2="475" y2="188"
-        stroke="var(--gap)" stroke-width="4" stroke-dasharray="8 5"/>
-  <line x1="475" y1="188" x2="738" y2="188"
-        stroke="var(--accent)" stroke-width="4"/>
-  <polygon points="742,188 732,182 732,194" fill="var(--accent)"/>
+  <defs>
+    <pattern id="gap-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="var(--gap)" stroke-width="2" opacity="0.4"/>
+    </pattern>
 
-  <!-- Gap region -->
-  <rect x="332" y="32" width="136" height="140" rx="8"
-        fill="var(--gap-bg)" stroke="var(--gap)" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <text x="400" y="115" class="gap-q">?</text>
+    <!-- Reusable icon: persona (role/person) -->
+    <symbol id="icon-persona" viewBox="-15 -23 30 38">
+      <circle r="9" cy="-13" stroke="var(--accent)" stroke-width="2"/>
+      <path d="M-14,14 C-14,2 -8,-2 0,-2 C8,-2 14,2 14,14"
+            stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Reusable icon: artifact (document/output) -->
+    <symbol id="icon-artifact" viewBox="-13 -17 26 35">
+      <path d="M-11,-15 h15 l7,7 v24 h-22 z"
+            stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M4,-15 v7 h7"
+            stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
+      <line x1="-5" y1="-1" x2="5" y2="-1" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+      <line x1="-5" y1="6" x2="5" y2="6" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+      <line x1="-5" y1="13" x2="1" y2="13" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+    </symbol>
+  </defs>
+
+  <!-- External source labels (centered vertically on icon midpoint y=67) -->
+  <text x="58" y="38" class="source">Customers</text>
+  <text x="58" y="54" class="source">Market</text>
+  <text x="58" y="70" class="source">Leadership</text>
+  <text x="58" y="86" class="source">Legacy Code</text>
+  <text x="58" y="102" class="source">Budget</text>
+
+  <!-- Converging lines to icon midpoint level -->
+  <line x1="63" y1="35" x2="140" y2="67" stroke="var(--fg-muted)" stroke-width="1" opacity="0.3"/>
+  <line x1="63" y1="51" x2="140" y2="67" stroke="var(--fg-muted)" stroke-width="1" opacity="0.3"/>
+  <line x1="63" y1="67" x2="140" y2="67" stroke="var(--fg-muted)" stroke-width="1" opacity="0.3"/>
+  <line x1="63" y1="83" x2="140" y2="67" stroke="var(--fg-muted)" stroke-width="1" opacity="0.3"/>
+  <line x1="63" y1="99" x2="140" y2="67" stroke="var(--fg-muted)" stroke-width="1" opacity="0.3"/>
+  <!-- Connector arrow aligned with icon midpoint -->
+  <line x1="140" y1="67" x2="175" y2="67" stroke="var(--fg-muted)" stroke-width="1.5" opacity="0.4"/>
+  <polygon points="178,67 172,63 172,71" fill="var(--fg-muted)" opacity="0.4"/>
+
+  <!--
+    Pipeline: 5 equal sections, x=126 to x=816 (width=690, each=138)
+    Boundaries: 126, 264, 402, 540, 678, 816
+    Entity centers: 195, 333, 471, 609, 747
+  -->
+  <rect x="126" y="178" width="690" height="20" rx="10" fill="var(--accent)"/>
+  <rect x="402" y="178" width="138" height="20" fill="var(--gap-bg)" stroke="var(--gap)" stroke-width="1.5"/>
+  <rect x="402" y="178" width="138" height="20" fill="url(#gap-stripes)"/>
+  <polygon points="822,188 808,176 808,200" fill="var(--accent)"/>
+
+  <!-- Question mark over gap -->
+  <text x="471" y="77" class="gap-q">?</text>
 
   <!-- Connectors to pipeline -->
-  <line x1="100" y1="140" x2="100" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
-  <line x1="260" y1="140" x2="260" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
-  <line x1="540" y1="140" x2="540" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
-  <line x1="700" y1="140" x2="700" y2="183" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="195" y1="140" x2="195" y2="177" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="333" y1="140" x2="333" y2="177" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="609" y1="140" x2="609" y2="177" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
+  <line x1="747" y1="140" x2="747" y2="177" stroke="var(--accent)" stroke-width="1.5" opacity="0.25"/>
 
   <!-- Product Manager -->
-  <g transform="translate(100,67)">
-    <circle r="9" cy="-13" stroke="var(--accent)" stroke-width="2"/>
-    <path d="M-13,12 C-13,-1 -7,-6 0,-6 C7,-6 13,-1 13,12"
-          stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-  </g>
-  <text x="100" y="112" class="label">Product</text>
-  <text x="100" y="127" class="label">Manager</text>
+  <use href="#icon-persona" x="180" y="44" width="30" height="38"/>
+  <text x="195" y="112" class="label">Product</text>
+  <text x="195" y="127" class="label">Manager</text>
 
   <!-- Product Strategy -->
-  <g transform="translate(260,62)">
-    <path d="M-11,-15 h15 l7,7 v24 h-22 z"
-          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
-    <path d="M4,-15 v7 h7"
-          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
-    <line x1="-5" y1="-1" x2="5" y2="-1" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
-    <line x1="-5" y1="6" x2="5" y2="6" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
-    <line x1="-5" y1="13" x2="1" y2="13" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
-  </g>
-  <text x="260" y="112" class="label">Product</text>
-  <text x="260" y="127" class="label">Strategy</text>
+  <use href="#icon-artifact" x="320" y="45" width="26" height="35"/>
+  <text x="333" y="112" class="label">Product</text>
+  <text x="333" y="127" class="label">Strategy</text>
 
   <!-- Engineer -->
-  <g transform="translate(540,67)">
-    <circle r="9" cy="-13" stroke="var(--accent)" stroke-width="2"/>
-    <path d="M-13,12 C-13,-1 -7,-6 0,-6 C7,-6 13,-1 13,12"
-          stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-  </g>
-  <text x="540" y="112" class="label">Engineer</text>
+  <use href="#icon-persona" x="594" y="44" width="30" height="38"/>
+  <text x="609" y="112" class="label">Engineer</text>
 
   <!-- Source Code -->
-  <g transform="translate(700,62)">
-    <path d="M-11,-15 h15 l7,7 v24 h-22 z"
-          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
-    <path d="M4,-15 v7 h7"
-          stroke="var(--fg-muted)" stroke-width="1.8" stroke-linejoin="round"/>
-    <line x1="-5" y1="-1" x2="5" y2="-1" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
-    <line x1="-5" y1="6" x2="5" y2="6" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
-    <line x1="-5" y1="13" x2="1" y2="13" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
-  </g>
-  <text x="700" y="112" class="label">Source</text>
-  <text x="700" y="127" class="label">Code</text>
+  <use href="#icon-artifact" x="734" y="45" width="26" height="35"/>
+  <text x="747" y="112" class="label">Source</text>
+  <text x="747" y="127" class="label">Code</text>
 </svg>

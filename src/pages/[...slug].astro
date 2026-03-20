@@ -45,9 +45,6 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month:
         Published {fmt(entry.data.published)}
         {entry.data.edited && <span> · Edited {fmt(entry.data.edited)}</span>}
       </p>
-      {entry.data.earlyAccess && (
-        <p class="text-sm text-gray-400 dark:text-dark-muted italic">This article is early access and may be revised in the future.</p>
-      )}
       <Content />
     </>
   )}

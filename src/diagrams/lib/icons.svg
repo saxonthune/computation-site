@@ -1,0 +1,26 @@
+<!--
+  Reusable SVG icon symbols for diagrams.
+  Copy the <symbol> elements you need into your diagram's <defs>.
+  Icons use CSS custom properties from the design tokens (see svg-designer skill).
+-->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Persona: a role or person (head + shoulders). Uses --accent color. -->
+    <symbol id="icon-persona" viewBox="-15 -23 30 38">
+      <circle r="9" cy="-13" stroke="var(--accent)" stroke-width="2" fill="none"/>
+      <path d="M-14,14 C-14,2 -8,-2 0,-2 C8,-2 14,2 14,14"
+            stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Artifact: a document or output (page with folded corner + text lines). Uses --fg-muted color. -->
+    <symbol id="icon-artifact" viewBox="-13 -17 26 35">
+      <path d="M-11,-15 h15 l7,7 v24 h-22 z"
+            stroke="var(--fg-muted)" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+      <path d="M4,-15 v7 h7"
+            stroke="var(--fg-muted)" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+      <line x1="-5" y1="-1" x2="5" y2="-1" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+      <line x1="-5" y1="6" x2="5" y2="6" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+      <line x1="-5" y1="13" x2="1" y2="13" stroke="var(--fg-muted)" stroke-width="1.2" opacity="0.4"/>
+    </symbol>
+  </defs>
+</svg>

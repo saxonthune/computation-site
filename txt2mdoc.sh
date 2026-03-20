@@ -3,7 +3,7 @@
 # Usage: ./txt2mdoc.sh src/content/pages/product-and-software.txt
 #
 # Transformations:
-#   - Generates frontmatter (title from filename, permalink, today's date, earlyAccess)
+#   - Generates frontmatter (title from filename, permalink, today's date)
 #   - Paragraphs: joins consecutive non-blank lines into single lines
 
 set -euo pipefail
@@ -25,7 +25,6 @@ today=$(date +%Y-%m-%d)
 title: "$title"
 permalink: $permalink
 published: $today
-earlyAccess: true
 ---
 
 EOF

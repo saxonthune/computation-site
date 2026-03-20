@@ -1,12 +1,34 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 interface Props {
   src: string;
   alt: string;
   caption?: string;
 }
 const { src, alt, caption } = Astro.props;
+
+let svgContent: string | null = null;
+if (src.endsWith('.svg')) {
+  const filePath = path.join(process.cwd(), 'public', src);
+  try {
+    let raw = fs.readFileSync(filePath, 'utf-8');
+    // Replace prefers-color-scheme media query with class-based dark mode
+    // so inlined SVGs follow the site's theme toggle
+    raw = raw.replace(
+      /@media\s*\(\s*prefers-color-scheme:\s*dark\s*\)\s*\{\s*svg\s*\{([\s\S]*?)\}\s*\}/,
+      ':root.dark svg {$1}'
+    );
+    // Add role and aria-label for accessibility
+    raw = raw.replace('<svg', `<svg role="img" aria-label="${alt}"`);
+    svgContent = raw;
+  } catch {
+    // Fall back to <img> if file can't be read
+  }
+}
 ---
 <figure class="my-6">
-  <img src={src} alt={alt} class="rounded max-w-full" loading="lazy" decoding="async" />
+  {svgContent ? <Fragment set:html={svgContent} /> : <img src={src} alt={alt} class="rounded max-w-full" loading="lazy" decoding="async" />}
   {caption && <figcaption class="mt-2 text-center text-sm text-gray-500 italic">{caption}</figcaption>}
 </figure>
