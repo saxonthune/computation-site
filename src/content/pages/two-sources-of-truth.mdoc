@@ -1,6 +1,77 @@
 ---
 title: "Two Sources of Truth"
 permalink: two-sources-of-truth
-published: 2026-03-19
-stub: true
+published: 2026-04-18
 ---
+
+Building software is hard because we lack objectives. "What am I building?" Teams recognize this difficulty, and to reduce ambiguity they create documentation. "This Google Sheet is the source of truth for our _new user flow enhancements_ project." There are exactly two sources of truth.
+
+AI promises to change everything, but we are stuck trying to apply it to our current processes, our minds bogged down by outdated models. Instead, we need to make new models. If we could start over, where would we start?
+
+### Two Sources of Truth
+
+When it comes to building software, there are two fundamental elements. The first is **product demand**. Start with a single person who says "I want an app that does \_\_\_" or "I wish this existing app handled \_\_\_ differently"; there is a desire for some piece of software that is entirely unmet, or inadequately met by other software. Now consider the combined desires of all software users. Product expectations are not physical, but they manifest themselves on social media, or as market signals.
+
+The goal of a software team is to build something that matches expectations.
+This is very difficult for several reasons.
+First, product expectations are hard to nail down.
+In many cases, it isn't clear what users really want.
+We label the best as visionaries because, like a medium, they are able to see what markets want in a way that most people cannot.
+Second, product expectations are constantly shifting.
+Even if a team makes excellent, perfectly fitting software today, there will be expectations for new features and enhancements tomorrow.
+Finally, the conversion from expectations to source code is a complex, multifaceted process, one that has many failure points.
+If we are to use AI to the fullest, we need to understand this process in greater detail.
+
+As a shorthand, we can consider a **product signal** broadcast from product expectations; the goal of every software team is to capture as much signal as possible in their source code.
+
+{% figure src="/diagrams/two-sources.svg" alt="Two sources of truth: Product Expectations and Source Code, connected by an arrow" caption="Good software faithfully transforms product expectations into source code by interpreting the product signal." /%}
+
+How does a team go about capturing this signal, transforming it into lines of code?
+Software development lifecycle (SDLC) methodologies break the process into smaller, manageable phases.
+The [waterfall model](https://en.wikipedia.org/wiki/Waterfall_model) has several bulky phases -- design, implementation, testing, maintenance.
+Modern methodologies like [Agile](https://en.wikipedia.org/wiki/Agile_software_development) aim for significantly shorter turnaround times, but the general process is the same. 
+These phases are usually handled by different roles in an organization; team leads and product managers will decide overall strategy and design, and individual engineers write the code and handle other specifics.
+To aid with the hand-off, teams produce **artifacts**, such as Figma mock-ups, API documentation, Jira tickets, or the all important Excel spreadsheet.
+Past a certain scale, most software projects would be impossible without strategies like these.
+
+{% figure src="/diagrams/two-sources-artifacts.svg" alt="Product Expectations flow through Artifacts to Source Code" caption="Artifacts and SDLC methodologies capture the product signal." /%}
+
+However, this process is far from perfect, and there are several gaps through which noise is introduced into the signal.
+In general, every additional step in an SDLC process creates an opportunity for misunderstanding.
+These misunderstandings become encoded into artifacts.
+Modern software teams may be large, distributed, and navigate language or cultural barriers; all of these produce a larger surface for signal leaks.
+There is a daisy-chain effect: even when Agile is followed with zeal, Jira tickets (which represent a small unit of coding work) are written from a requirements document or architectural strategy document, which flow from a more general product strategy document.
+As a result, by the time engineers are writing code from their tickets, the signal has been severely degraded, and their code may not fit the original product at all.
+
+{% figure src="/diagrams/signal-dilution.svg" alt="Signal dilution through artifacts" caption="Each jump between artifacts causes signal loss." /%}
+
+In concrete terms, engineers do not have enough information to build software when it comes time for coding.
+They need to make ad-hoc decisions to compensate for accumulated ambiguities.
+Ad-hoc decisions are usually concentrated around edges cases or unexpected states -- what happens if a user upgrades to a premium subscription, cancels after the next billing period, then tries to upgrade again?
+
+I'm just repeating myself. fuck this.
+What am I trying to do?
+SDLC leads to a build-up of poor, hasty decisions.
+We reveal that the second source of truth is the source code itself, because over time it is the only coherent description of what the product actually is.
+This is bad and leads to bad code.
+Instead of being faithful to the product, we have to service the source code. 
+Every ounce of effort babying the code is an opportunity cost in building the product that will lead to success
+
+Now, everyone wants to adopt AI driven development.
+AI will happily take a diluted signal and make as many ad-hoc decisions as needed.
+The result is shitty, brittle source code that nobody can decipher, an industrial spaghetti machine.
+
+The solution is to use AI to boost the signal continuously throughout the development process.
+In practice, this means making well-defined spec groups.
+Source code shouldn't contain any meaningful information.
+Reading code shouldn't be a prerequisite to understanding the product, but it is today.
+Our goal should be to create human processes that democratizes the decision making process away from engineers.
+A domain expert should be able to use AI to build a spec, without knowing what a spec is.
+If the tools don't exist, then we build them.
+
+
+{% figure src="/diagrams/sdlc-pipeline-ai.svg" alt="Same SDLC pipeline but with a rainbow-colored AI arrow from Jira Tickets to Source Code" caption="Many SDD methodologies adopt agile without realizing it." /%}
+
+{% figure src="/diagrams/spec-groups.svg" alt="Product Expectations to Source Code through four spec groups: Product Strategy, Product Design, Architecture, and Code Shape, with a rainbow bar underneath" caption="Four spec groups bridge the two sources, powered by AI across the full pipeline." /%}
+
+{% figure src="/diagrams/spec-reconciliation.svg" alt="Two-row diagram: top row has purple spec groups derived from Product Expectations, bottom row has green spec groups derived from Source Code, with reconciliation arrows between matching groups" caption="If you have inherited an old codebase, it may be your best source of product information!" /%}

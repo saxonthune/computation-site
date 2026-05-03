@@ -28,7 +28,7 @@ if (src.endsWith('.svg')) {
   }
 }
 ---
-<figure class="my-6">
+<figure class="mt-16 mb-16">
   {svgContent ? <Fragment set:html={svgContent} /> : <img src={src} alt={alt} class="rounded max-w-full" loading="lazy" decoding="async" />}
   {caption && <figcaption class="mt-2 text-center text-sm text-gray-500 italic">{caption}</figcaption>}
 </figure>

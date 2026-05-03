@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 1010 250" fill="none">
+  <style>
+    svg {
+      --fg: #111827;
+      --fg-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --gap: #6b7280;
+      --gap-bg: #f1f5f9;
+      --pe: #7c3aed;
+      --pe-fill: #ede9fe;
+      --sc: #0d9488;
+      --sc-fill: #ccfbf1;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fg: #e8e2d6;
+        --fg-muted: #a09890;
+        --accent: #d4a647;
+        --accent-soft: #2a2520;
+        --gap: #a09890;
+        --gap-bg: #2a2520;
+        --pe: #d4b0e8;
+        --pe-fill: #322238;
+        --sc: #a0d4b8;
+        --sc-fill: #1e3028;
+      }
+    }
+    text { font-family: system-ui, -apple-system, sans-serif; }
+</style>
+<rect x="0" y="3.5" width="160" height="55" rx="27.5" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="80" y="29" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Product
+</text>
+<text x="80" y="45" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Expectations
+</text>
+<line x1="165" y1="31" x2="190" y2="31" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="190,31 184,26.4 184,35.6" fill="var(--fg-muted)"/>
+<rect x="201" y="6" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="198" y="3" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="195" y="0" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="255" y="29" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Product Strategy
+</text>
+<text x="255" y="45" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--pe)">
+(spec group)
+</text>
+<line x1="326" y1="31" x2="343" y2="31" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="343,31 337,26.4 337,35.6" fill="var(--fg-muted)"/>
+<polygon points="326,31 332,26.4 332,35.6" fill="var(--fg-muted)"/>
+<rect x="354" y="6" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="351" y="3" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="348" y="0" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="408" y="29" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Product Design
+</text>
+<text x="408" y="45" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--pe)">
+(spec group)
+</text>
+<line x1="479" y1="31" x2="496" y2="31" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="496,31 490,26.4 490,35.6" fill="var(--fg-muted)"/>
+<polygon points="479,31 485,26.4 485,35.6" fill="var(--fg-muted)"/>
+<rect x="507" y="6" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="504" y="3" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="501" y="0" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="561" y="29" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Architecture
+</text>
+<text x="561" y="45" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--pe)">
+(spec group)
+</text>
+<line x1="632" y1="31" x2="649" y2="31" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="649,31 643,26.4 643,35.6" fill="var(--fg-muted)"/>
+<polygon points="632,31 638,26.4 638,35.6" fill="var(--fg-muted)"/>
+<rect x="660" y="6" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="657" y="3" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<rect x="654" y="0" width="120" height="62" rx="4" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="714" y="29" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Code Shape
+</text>
+<text x="714" y="45" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--pe)">
+(spec group)
+</text>
+<line x1="785" y1="31" x2="848" y2="31" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<line x1="848" y1="31" x2="848" y2="137.5" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="848,145.5 843,137.5 853,137.5" fill="var(--fg-muted)"/>
+<line x1="915" y1="62" x2="915" y2="137.5" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="915,145.5 910,137.5 920,137.5" fill="var(--fg-muted)"/>
+<rect x="860" y="0" width="110" height="62" rx="4" fill="var(--gap-bg)" stroke="var(--gap)" stroke-width="2"/>
+<text x="915" y="29" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--gap)">
+Ad-hoc
+</text>
+<text x="915" y="45" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--gap)">
+Decisions
+</text>
+<line x1="815" y1="181" x2="479" y2="181" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="479,181 485,176.3846153846154 485,185.6153846153846" fill="var(--fg-muted)"/>
+<line x1="815" y1="173" x2="632" y2="173" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="632,173 638,168.3846153846154 638,177.6153846153846" fill="var(--fg-muted)"/>
+<line x1="815" y1="165" x2="785" y2="165" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="785,165 791,160.3846153846154 791,169.6153846153846" fill="var(--fg-muted)"/>
+<rect x="820" y="145.5" width="150" height="55" rx="27.5" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<text x="895" y="178" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--sc)">
+Source Code
+</text>
+<rect x="354" y="148" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<rect x="351" y="145" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<rect x="348" y="142" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<text x="408" y="171" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--sc)">
+Product Design
+</text>
+<text x="408" y="187" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--sc)">
+(spec group)
+</text>
+<rect x="507" y="148" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<rect x="504" y="145" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<rect x="501" y="142" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<text x="561" y="171" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--sc)">
+Architecture
+</text>
+<text x="561" y="187" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--sc)">
+(spec group)
+</text>
+<rect x="660" y="148" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<rect x="657" y="145" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<rect x="654" y="142" width="120" height="62" rx="4" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<text x="714" y="171" style="font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--sc)">
+Code Shape
+</text>
+<text x="714" y="187" style="font-size: 12px; font-weight: 400; text-anchor: middle; fill: var(--sc)">
+(spec group)
+</text>
+<line x1="408" y1="77" x2="408" y2="133" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="408,72 403,77 413,77" fill="var(--fg-muted)"/>
+<polygon points="408,138 403,133 413,133" fill="var(--fg-muted)"/>
+<line x1="561" y1="77" x2="561" y2="133" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="561,72 556,77 566,77" fill="var(--fg-muted)"/>
+<polygon points="561,138 556,133 566,133" fill="var(--fg-muted)"/>
+<line x1="714" y1="77" x2="714" y2="133" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="714,72 709,77 719,77" fill="var(--fg-muted)"/>
+<polygon points="714,138 709,133 719,133" fill="var(--fg-muted)"/>
+</svg>

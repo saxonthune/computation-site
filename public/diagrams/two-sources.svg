@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 670 92" fill="none">
+  <style>
+    svg {
+      --fg: #111827;
+      --fg-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --gap: #6b7280;
+      --gap-bg: #f1f5f9;
+      --pe: #7c3aed;
+      --pe-fill: #ede9fe;
+      --sc: #0d9488;
+      --sc-fill: #ccfbf1;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fg: #e8e2d6;
+        --fg-muted: #a09890;
+        --accent: #d4a647;
+        --accent-soft: #2a2520;
+        --gap: #a09890;
+        --gap-bg: #2a2520;
+        --pe: #d4b0e8;
+        --pe-fill: #322238;
+        --sc: #a0d4b8;
+        --sc-fill: #1e3028;
+      }
+    }
+    text { font-family: system-ui, -apple-system, sans-serif; }
+</style>
+<rect x="0" y="0" width="240" height="56" rx="28" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="120" y="33" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Product Expectations
+</text>
+<line x1="250" y1="28" x2="410" y2="28" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="410,28 404,23.4 404,32.6" fill="var(--fg-muted)"/>
+<text x="330" y="46" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--fg-muted)">
+Product Signal
+</text>
+<rect x="420" y="0" width="210" height="56" rx="28" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<text x="525" y="33" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--sc)">
+Source Code
+</text>
+</svg>

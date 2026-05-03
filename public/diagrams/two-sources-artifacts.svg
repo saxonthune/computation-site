@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 720 202" fill="none">
+  <style>
+    svg {
+      --fg: #111827;
+      --fg-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --gap: #6b7280;
+      --gap-bg: #f1f5f9;
+      --pe: #7c3aed;
+      --pe-fill: #ede9fe;
+      --sc: #0d9488;
+      --sc-fill: #ccfbf1;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fg: #e8e2d6;
+        --fg-muted: #a09890;
+        --accent: #d4a647;
+        --accent-soft: #2a2520;
+        --gap: #a09890;
+        --gap-bg: #2a2520;
+        --pe: #d4b0e8;
+        --pe-fill: #322238;
+        --sc: #a0d4b8;
+        --sc-fill: #1e3028;
+      }
+    }
+    text { font-family: system-ui, -apple-system, sans-serif; }
+</style>
+<rect x="0" y="40" width="200" height="58" rx="28" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="100" y="73" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Product Expectations
+</text>
+<line x1="210" y1="69" x2="254" y2="69" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="254,69 248,64.4 248,73.6" fill="var(--fg-muted)"/>
+<rect x="260" y="0" width="200" height="162" rx="6" fill="var(--pe-fill)" stroke="var(--pe)" stroke-width="2"/>
+<text x="360" y="30" style="font-size: 16px; font-weight: 600; text-anchor: middle; fill: var(--pe)">
+Artifacts
+</text>
+<rect x="289.5" y="42" width="46" height="26" rx="13" fill="none" stroke="var(--pe)" stroke-width="1.2"/>
+<text x="312.5" y="59" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--pe)">
+PRDs
+</text>
+<rect x="345.5" y="42" width="85" height="26" rx="13" fill="none" stroke="var(--pe)" stroke-width="1.2"/>
+<text x="388" y="59" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--pe)">
+team wikis
+</text>
+<rect x="276.5" y="76" width="98" height="26" rx="13" fill="none" stroke="var(--pe)" stroke-width="1.2"/>
+<text x="325.5" y="93" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--pe)">
+Jira tickets
+</text>
+<rect x="384.5" y="76" width="59" height="26" rx="13" fill="none" stroke="var(--pe)" stroke-width="1.2"/>
+<text x="414" y="93" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--pe)">
+Notion
+</text>
+<rect x="283" y="110" width="59" height="26" rx="13" fill="none" stroke="var(--pe)" stroke-width="1.2"/>
+<text x="312.5" y="127" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--pe)">
+README
+</text>
+<rect x="352" y="110" width="85" height="26" rx="13" fill="none" stroke="var(--pe)" stroke-width="1.2"/>
+<text x="394.5" y="127" style="font-size: 12px; font-weight: 500; text-anchor: middle; fill: var(--pe)">
+docs, etc.
+</text>
+<line x1="470" y1="69" x2="514" y2="69" stroke="var(--fg-muted)" stroke-width="1.5"/>
+<polygon points="514,69 508,64.4 508,73.6" fill="var(--fg-muted)"/>
+<rect x="520" y="40" width="160" height="58" rx="28" fill="var(--sc-fill)" stroke="var(--sc)" stroke-width="2"/>
+<text x="600" y="73" style="font-size: 15px; font-weight: 600; text-anchor: middle; fill: var(--sc)">
+Source Code
+</text>
+</svg>

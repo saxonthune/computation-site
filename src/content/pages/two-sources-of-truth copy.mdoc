@@ -1,0 +1,71 @@
+---
+title: "Two Sources of Truth"
+permalink: two-sources-of-truth-a
+published: 2026-04-18
+---
+
+Building software is hard because we lack objectives. "What am I building?" Teams recognize this difficulty, and to reduce ambiguity they create documentation. "This Google Sheet is the source of truth for our _new user flow enhancements_ project." There are exactly two sources of truth.
+
+AI promises to change everything, but we are stuck trying to apply it to our current processes, our minds bogged down by outdated models. Instead, we need to make new models. If we could start over, where would we start?
+
+### Two Sources of Truth
+
+The first source of truth is the **source code** maintained by a software team. When a user interacts with an app, they are technically manipulating electrons in the circuits of their device, but the patterns of the electrons are reliably determined by what is written in source code, and source code is usually the last thing a team can influence. It represents the concrete reality in the present moment.
+
+With only source code and no other frame of reference, there is no such thing as a bug. Imagine a profile page in a mobile app that exhibits the following behavior: a user updates their email, presses a button to save changes, reloads the page, yet finds their previous email in the field. We only believe this behavior buggy because it conflicts with our expectations -- when a button on a page says 'Save Changes' below a set of fields, we expect the button to actually save the changes.
+
+The second source of truth is the set of expectations placed upon the product, or **product expectations**.  They are the unstated assumptions and aspirations of everyone who touches the product, or would use the product if it existed.  They shift as fast as markets do; they are as dynamic as the human societies they reflect. Whereas source code is completely real, product expectations are completely unreal, waiting to be realized.
+
+Together, the two sources form opposite poles, potential and actual. The challenge of software development is to reconcile the two sources. Whenever an engineer finds themselves writing code, it is because the source code requires modifications to realize the product. The code may implement the right features incorrectly (bugs), or the wrong features correctly (which the user never asked for), or there may no code to speak of. In all cases, source code is always out of step with the product, and a software team's sole purpose is to reconcile this misfit.
+
+Finally, we can imagine a **product signal** broadcast from the product expectations. A successful software team captures this signal and turns it into source code.
+
+{% figure src="/diagrams/two-sources.svg" alt="Two sources of truth: Product Expectations and Source Code, connected by an arrow" caption="The two sources of truth are product expectations and source code." /%}
+
+Reconciliation is a daunting task, and professionals have developed software development lifecycle (SDLC) methodologies to break the process into smaller tasks. These methodologies can differ greatly, but they all share two things in common, and they will help us understand their benefits and fundamental limitations. First, software teams make **artifacts**. These are Figma mock-ups, API documentation, an all important Google Doc or Excel spreadsheet. Teams sometimes call them a source of truth, but they are materializations of intangible product expectations. Just like source code, artifacts never quite capture a product exactly, and without maintenance they only fall further out of sync. Second, they formalize a division of labor between product people and technology people. Different personalities types succeed at both ends: . Together, they
+
+{% figure src="/diagrams/two-sources-artifacts.svg" alt="Product Expectations flow through Artifacts to Source Code" caption="Artifacts bridge the gap between the two sources." /%}
+
+Now, the flaws. 
+Because of the division of labor, there is a tendency for high level product strategy to be figured out first, and then technical implementation details figured out from there.
+This causes a hierarchical procession of artifacts where one is generated out of the last, such as Product Requirement Documents (PRDs) and Jira tickets.
+We can imagine product expectations emitting a pure signal; every artifact introduces noise in the form of incorrect assumptions and uncommunicated expectations.
+By the time engineers are writing code from their tickets, the signal is significantly diluted, and their code may not fit at all.
+
+
+{% figure src="/diagrams/signal-dilution.svg" alt="Signal dilution through artifacts" caption="SDLC practices dilute the signal between product and code." /%}
+
+To compensate for a weak product signal, team members have no choice but to make ad-hoc product decisions.
+However, these decisions are not captured anywhere in a systematic way, except in the source code itself.
+
+{% figure src="/diagrams/sdlc-pipeline.svg" alt="SDLC pipeline from Product Expectations through Strategy Deck, Figma Mocks, API Schema, and Jira Tickets to Source Code, with uncaptured knowledge arrows bypassing stages" caption="A hypothetical SDLC. Knowledge that isn't captured in artifacts flows directly to code." /%}
+
+Software engineering seems complicated because we try to address many classes of errors (misfits between the sources) inside of code. Does the code not match the product design? Does the product design not match the strategy? Is the architecture a poor fit for how users really interact with the product? 
+
+With a traditional SDLC, all of these issues only appear when someone says "there's a bug in the code," bugs which only engineers are authorized to diagnose and fix. Every day, engineers are unknowingly deciding realizing product expectations without the resources, artifacts, and customer perspective to do successfully.
+
+For a new SDLC to be successful, it has to maintain the product signal through the planning process, and it has to entice its practicioners 
+
+### Spec Driven Development
+
+The future is specification-driven development (SDD).
+
+Some approaches to specification-driven development (SDD) methodologies are centered around JIRA-to-code segment of the pipeline faster. This is admirable, but it reflects a view dominated by technology and the engineer's perspective within the SDLC process. While AI can generate code from a spec extremely quickly, the quality of the code (the fit between itself product expectations) is limited by the signal quality of the spec itself. 
+
+{% figure src="/diagrams/sdlc-pipeline-ai.svg" alt="Same SDLC pipeline but with a rainbow-colored AI arrow from Jira Tickets to Source Code" caption="Many SDD methodologies adopt agile without realizing it." /%}
+
+AI coding tools shift the bottleneck from coding to the rest of the SDLC process. The solution is simple: introduce AI into the other segments of the SDLC until it is uniformly integrated. In other words,  Without AI, these artifacts are time-consuming to maintain, and they don't directly contribute to realizing the product. There is an equilibrium, where only the most high-value documentation is actually created; further documentation would improve the source code, but it takes less time to iterate on the source code.
+
+AI shifts the documentation-code equilibrium drastically. Now, we can make extensive, tedious documentation out of natural language prompts.
+
+AI can help with much more than this. We won't realize the "next industrial revolution" magnitude of efficiency promised by AI until we build a new SDLC around it; we don't fit the assembly line around the factory, but the factory around the assembly line. Instead of individual spec files, we should think about spec groups spaced between the two sources. We will be exploring a spec system with four groups: product strategy, product design, architecture, and code shape.
+
+{% figure src="/diagrams/spec-groups.svg" alt="Product Expectations to Source Code through four spec groups: Product Strategy, Product Design, Architecture, and Code Shape, with a rainbow bar underneath" caption="Four spec groups bridge the two sources, powered by AI across the full pipeline." /%}
+
+AI output's  its context contains less [surprise](https://en.wikipedia.org/wiki/Entropy_(information_theory)#Introduction). In fact, we can choke the spread of possible outputs further by transforming source code into artifacts, and comparing them to our artifacts derived from product expectations.
+
+{% figure src="/diagrams/spec-reconciliation.svg" alt="Two-row diagram: top row has purple spec groups derived from Product Expectations, bottom row has green spec groups derived from Source Code, with reconciliation arrows between matching groups" caption="If you have inherited an old codebase, it may be your best source of product information!" /%}
+
+There are many ways to address the challenge of product-code reconciliation. The four group model used here is not the only one capable of producing better reconciliation. With the speed of changes in AI capabilities (and in markets and society in general), our goal shouldn't be to discover the "one true way" to make software, but rather to create a provisional model that enhances our understanding. The only way to stay ahead of the curve is to keep innovating.
+
+
