@@ -9,7 +9,7 @@ const pageMap = Object.fromEntries(allPages.map(p => [p.data.permalink, p]));
 // Table of contents structure: [permalink, display title]
 const toc = {
   intro: [
-    ['preface', 'Preface'],
+    ['preface', 'Preface: Towards Software Design'],
   ],
   'I. Product, Software, AI': [
     ['product-and-software', 'Product and Software'],
@@ -60,6 +60,8 @@ const toc = {
   <div class="flex items-center justify-center gap-4">
     <p class="text-sm text-gray-400 dark:text-dark-muted">
       <a href="/blog" class="text-accent-light dark:text-accent-dark hover:underline">Blog</a>
+      <span class="ml-2">&middot;</span>
+      <a href="https://github.com/saxonthune/computation-site" class="text-accent-light dark:text-accent-dark hover:underline ml-2">GitHub</a>
       <span class="ml-2">&middot;</span>
     <ThemeToggle />
     </p>
