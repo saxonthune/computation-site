@@ -17,3 +17,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --offline --base dist 'dist/**/*.html'
+          fail: true
