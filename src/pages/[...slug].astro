@@ -34,8 +34,7 @@ if (redirect) {
 const { Content } = await entry.render();
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
-<Prose title={entry.data.title}>
-  <p class="not-prose text-xs text-black dark:text-dark-muted mb-8"><a href="/" class="hover:text-accent-light dark:hover:text-dark-heading">&larr; contents</a></p>
+<Prose title={entry.data.title} backHref="/" backLabel="contents">
   <h1 class="font-heading dark:text-dark-heading">{entry.data.title}</h1>
   {entry.data.stub ? (
     <p class="text-black dark:text-dark-muted italic mt-4">This article hasn't been written yet. Check back soon!</p>
