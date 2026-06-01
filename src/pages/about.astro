@@ -1,8 +1,7 @@
 ---
 import Prose from '../layouts/Prose.astro';
 ---
-<Prose title="About Me">
-  <p class="not-prose text-xs text-gray-400 dark:text-dark-muted mb-8"><a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">&larr; contents</a></p>
+<Prose title="About Me" backHref="/" backLabel="contents">
   <h1 class="font-heading dark:text-dark-heading">About Me</h1>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -14,7 +13,7 @@ import Prose from '../layouts/Prose.astro';
     Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.
   </p>
   <hr class="my-8 border-gray-200 dark:border-gray-800" />
-  <nav class="not-prose flex gap-4 text-sm text-gray-400 dark:text-dark-muted">
-    <a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">main</a>
+  <nav class="not-prose flex gap-4 text-sm text-black dark:text-dark-muted">
+    <a href="/" class="hover:text-accent-light dark:hover:text-dark-heading">main</a>
   </nav>
 </Prose>

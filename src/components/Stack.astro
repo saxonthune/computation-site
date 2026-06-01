@@ -1,0 +1,10 @@
+---
+// A vertical group of images that occupies one cell of a `gallery` row.
+// Used for asymmetric layouts (e.g. two stacked images beside a single tall
+// one). Lives inside `gallery`; holds `gimg` children.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+<div class:list={["gallery-stack", className]}><slot /></div>

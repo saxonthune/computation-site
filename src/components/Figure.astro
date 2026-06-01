@@ -6,8 +6,12 @@ interface Props {
   src: string;
   alt: string;
   caption?: string;
+  class?: string;
+  imgClass?: string;
 }
-const { src, alt, caption } = Astro.props;
+const { src, alt, caption, class: className, imgClass } = Astro.props;
+const figClass = className ?? 'my-6';
+const imageClass = imgClass ?? 'rounded max-w-full';
 
 let svgContent: string | null = null;
 if (src.endsWith('.svg')) {
@@ -28,7 +32,7 @@ if (src.endsWith('.svg')) {
   }
 }
 ---
-<figure class="my-6">
-  {svgContent ? <Fragment set:html={svgContent} /> : <img src={src} alt={alt} class="rounded max-w-full" loading="lazy" decoding="async" />}
-  {caption && <figcaption class="mt-2 text-center text-sm text-gray-500 italic">{caption}</figcaption>}
+<figure class={figClass}>
+  {svgContent ? <Fragment set:html={svgContent} /> : <img src={src} alt={alt} class={`${imageClass} cursor-zoom-in`} data-zoomable loading="lazy" decoding="async" />}
+  {caption && <figcaption class="mt-2 text-center text-sm text-black dark:text-dark-text italic">{caption}</figcaption>}
 </figure>

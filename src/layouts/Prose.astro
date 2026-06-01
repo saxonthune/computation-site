@@ -2,11 +2,14 @@
 // Layout for long-form content with typography styling
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Lightbox from '../components/Lightbox.astro';
 
 interface Props {
   title: string;
+  backHref?: string;
+  backLabel?: string;
 }
-const { title } = Astro.props;
+const { title, backHref, backLabel } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -18,17 +21,24 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
     <script is:inline>
-      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      // Default to dark unless the user has explicitly chosen light (matches Base.astro)
+      if (localStorage.getItem('theme') !== 'light') {
         document.documentElement.classList.add('dark');
       }
     </script>
   </head>
-  <body class="relative text-gray-900 dark:text-dark-text min-h-screen">
-    <div class="absolute top-4 right-6 z-50"><ThemeToggle /></div>
-    <main class="max-w-3xl mx-auto px-4 pt-16 pb-8 bg-white dark:bg-dark-bg">
+  <body class="relative text-black dark:text-dark-text min-h-screen">
+    <main class="glass max-w-3xl mx-auto px-4 pt-8 pb-8">
+      <div class="not-prose flex items-center justify-between mb-8 text-xs text-black dark:text-dark-muted">
+        {backHref
+          ? <a href={backHref} class="hover:text-accent-light dark:hover:text-dark-heading">&larr; {backLabel}</a>
+          : <span></span>}
+        <ThemeToggle />
+      </div>
       <article class="prose prose-gray dark:prose-invert max-w-none">
         <slot />
       </article>
     </main>
+    <Lightbox />
   </body>
 </html>

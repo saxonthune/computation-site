@@ -1,0 +1,14 @@
+---
+// A multi-image unit: a single non-wrapping row of image cells (`gimg` or
+// `stack`) with one shared caption. The row never breaks — on narrow screens
+// the cells shrink to share the width rather than wrapping or stacking.
+interface Props {
+  caption?: string;
+  class?: string;
+}
+const { caption, class: className } = Astro.props;
+---
+<figure class:list={["gallery-fig", className]}>
+  <div class="gallery"><slot /></div>
+  {caption && <figcaption class="mt-3 text-center text-sm text-black dark:text-dark-text italic">{caption}</figcaption>}
+</figure>

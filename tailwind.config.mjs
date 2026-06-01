@@ -16,7 +16,7 @@ export default {
           bg: '#0d0e0f',        // near-black with warmth
           text: '#c8c3bc',      // warm light gray (body)
           heading: '#e8e2d6',   // cream white (headings)
-          muted: '#6b6560',     // warm gray (stubs)
+          muted: '#a39a8f',     // warm gray (stubs, meta) — readable over the glass
         },
       },
     },

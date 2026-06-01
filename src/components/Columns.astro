@@ -1,6 +1,22 @@
 ---
-// Two-column layout, stacks on mobile
+// Two-column layout, stacks on mobile.
+// With a `caption`, the whole row becomes a single <figure> with one shared
+// caption beneath it (used for the coloring-book triptych).
+interface Props {
+  class?: string;
+  caption?: string;
+}
+const { class: className, caption } = Astro.props;
 ---
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-  <slot />
-</div>
+{caption ? (
+  <figure class="my-6">
+    <div class:list={["grid grid-cols-1 md:grid-cols-2 gap-8", className]}>
+      <slot />
+    </div>
+    <figcaption class="mt-2 text-center text-sm text-black dark:text-dark-text italic">{caption}</figcaption>
+  </figure>
+) : (
+  <div class:list={["grid grid-cols-1 md:grid-cols-2 gap-8", className]}>
+    <slot />
+  </div>
+)}

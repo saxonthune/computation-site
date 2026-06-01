@@ -6,20 +6,218 @@
   --font-heading: 'Libre Baskerville', Georgia, serif;
 }
 
+/*
+ * Gallery — a multi-image unit with one shared caption (see Gallery.astro).
+ *
+ * The whole thing is sized off ONE unit: 1cqw = 1% of the component's width
+ * (the figure is the query container). Every length below is in cqw, so the
+ * layout scales proportionally at every screen size with no breakpoints.
+ *
+ * Spacing math — a stacked pair is kept exactly as tall as a lone image:
+ *     2 * STACKED_CAP + STACK_GAP = LONE_CAP   →   2*20 + 4 = 44 (cqw)
+ * and one shared GAP (4cqw) sets both the row and stack rhythm. The 44cqw lone
+ * cap is chosen so even a pair of squares (2*44 + 4 = 92) never overflows 100.
+ *
+ * Note: gallery images are bare <img> inside .prose, so they MUST reset the
+ * typography plugin's default img margins — otherwise prose spacing fights the
+ * flex gap and the cells drift apart.
+ */
+/* Padding is rem, not cqw: a container's OWN padding resolves cqw against the
+ * viewport (not itself), which balloons on wide screens. Less top/bottom than
+ * left/right, and kept tight so the images get more of the width. */
+.gallery-fig {
+  margin-block: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.04);
+  container-type: inline-size;
+}
+:root.dark .gallery-fig {
+  background: rgba(255, 255, 255, 0.05);
+}
+.gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4cqw;
+}
+.gallery-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4cqw;
+}
+.gallery-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0; /* cancel prose img margins; spacing is the gap's job */
+  border-radius: 0.25rem;
+  cursor: zoom-in;
+}
+/* Default (a row of lone images, e.g. an outline/result pair): the cap is set
+ * so a pair of squares fills the row — 2*48 + 4 gap = 100cqw. */
+.gallery-img {
+  max-height: 48cqw;
+}
+.gallery-stack .gallery-img {
+  max-height: 22cqw; /* (48 - 4) / 2 */
+}
+/* A gallery that contains a stack (the triptych) has only one wide image plus a
+ * narrow stack, so there's spare width — scale it up. Balance is preserved:
+ *   2 * STACKED_CAP + STACK_GAP = LONE_CAP   →   2*30 + 4 = 64 (cqw) */
+.gallery:has(.gallery-stack) .gallery-img {
+  max-height: 64cqw;
+}
+.gallery:has(.gallery-stack) .gallery-stack .gallery-img {
+  max-height: 30cqw;
+}
+
+/*
+ * Lightbox — native <dialog> driven by Lightbox.astro. Fills the viewport on
+ * mobile (near-fullscreen) and shows a large centered image on desktop.
+ */
+.lightbox {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+.lightbox img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 0.25rem;
+  cursor: zoom-out;
+}
+
+/* Shared caption overlaid at the bottom of the zoomed view. pointer-events:none
+   so taps fall through to the dialog's click-to-close handler. */
+.lightbox-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.25rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  pointer-events: none;
+}
+
+.lightbox-caption[hidden] {
+  display: none;
+}
+
+/*
+ * Article text — pure black in light mode. The `@tailwindcss/typography`
+ * `prose-gray` preset paints body copy gray-700, headings/bold gray-900, and
+ * captions/markers gray-500; over the bright glass that reads soft. Override the
+ * plugin's color tokens in one place so every prose element (paragraphs, lists,
+ * headings, quotes, captions) is black. Dark mode keeps `prose-invert`.
+ * Structural tokens (borders, hr, code background) and links are left alone.
+ */
+:root:not(.dark) .prose {
+  --tw-prose-body: #000;
+  --tw-prose-headings: #000;
+  --tw-prose-lead: #000;
+  --tw-prose-bold: #000;
+  --tw-prose-quotes: #000;
+  --tw-prose-captions: #000;
+  --tw-prose-counters: #000;
+  --tw-prose-bullets: #000;
+  --tw-prose-code: #000;
+  --tw-prose-links: #1565a6; /* accent.light — match nav links */
+}
+
+/* In-article links use the accent in dark mode too (prose-invert defaults to a
+   pale link color, not the site's warm gold). */
+:root.dark .prose {
+  --tw-prose-links: #d4a647; /* accent.dark */
+}
+
 body {
   background-color: white;
-  background-image:
-    linear-gradient(to bottom, white max(60%, calc(100% - 650px)), transparent calc(100% - 200px)),
-    url('/bg.png');
-  background-position: top, center bottom;
-  background-size: 100% 100%, 100% auto;
-  background-repeat: no-repeat, no-repeat;
-  background-attachment: scroll, scroll;
 }
 
 :root.dark body {
   background-color: #0d0e0f;
-  background-image:
-    linear-gradient(to bottom, #0d0e0f max(60%, calc(100% - 650px)), transparent calc(100% - 200px)),
-    url('/bg.png');
+}
+
+/*
+ * Luminous ground — the painting is a full-bleed, fixed field behind the whole
+ * page. A fixed pseudo-element (not background-attachment: fixed, which iOS
+ * ignores) keeps it steady while content scrolls over it. `cover` anchored to
+ * the bottom keeps the pink foreground in view and crops the sky off the top;
+ * because it's fixed, the viewport grades from calm light at the top to pink at
+ * the bottom on its own.
+ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('/bg.jpg') center bottom / cover no-repeat;
+}
+
+/*
+ * Frosted-glass content panel. The veil + blur sit directly on the panel (the
+ * bottom drop-off and its masking pseudo-element are gone), so the glass fills
+ * the whole box edge to edge — no painting peeking through a border on mobile.
+ * border-radius rounds the corners and clips the frost to match; the small
+ * top/bottom margin opens a gap so the painting shows above and below the card.
+ * The hairline border reads as the lit rim of the glass; the soft ambient
+ * shadow lifts the pane off the painting so it doesn't look pasted on.
+ */
+.glass {
+  border-radius: 16px;
+  margin-block: 0.875rem;
+  background: hsl(0 0% 100% / 0.78);
+  backdrop-filter: blur(30px) saturate(1.2);
+  -webkit-backdrop-filter: blur(30px) saturate(1.2);
+  border: 1px solid hsl(0 0% 0% / 0.08);
+  box-shadow: 0 0 60px hsl(0 0% 0% / 0.1);
+}
+
+:root.dark .glass {
+  background: hsl(220 6% 6% / 0.86);
+  border-color: hsl(40 12% 82% / 0.14);
+  box-shadow: 0 0 70px hsl(0 0% 0% / 0.35);
+}
+
+/* Heavy blur is GPU-costly and reads as muddy on phones; ease it on small
+ * screens. */
+@media (max-width: 640px) {
+  .glass {
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  }
+}
+
+/* Opaque fallback where backdrop-filter is unsupported, so text never floats on
+ * raw painting. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: hsl(0 0% 100% / 0.94);
+  }
+  :root.dark .glass {
+    background: hsl(220 6% 6% / 0.94);
+  }
 }
