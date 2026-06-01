@@ -2,6 +2,7 @@
 // Layout for long-form content with typography styling
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Lightbox from '../components/Lightbox.astro';
 
 interface Props {
   title: string;
@@ -23,12 +24,13 @@ const { title } = Astro.props;
       }
     </script>
   </head>
-  <body class="relative text-gray-900 dark:text-dark-text min-h-screen">
+  <body class="relative text-black dark:text-dark-text min-h-screen">
     <div class="absolute top-4 right-6 z-50"><ThemeToggle /></div>
-    <main class="max-w-3xl mx-auto px-4 pt-16 pb-8 bg-white dark:bg-dark-bg">
+    <main class="glass max-w-3xl mx-auto px-4 pt-16 pb-8">
       <article class="prose prose-gray dark:prose-invert max-w-none">
         <slot />
       </article>
     </main>
+    <Lightbox />
   </body>
 </html>

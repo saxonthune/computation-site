@@ -1,0 +1,18 @@
+---
+// A single caption-less image cell inside a `gallery` (or `stack`). The image
+// is the flex child the gallery lays out; clicking it opens the lightbox.
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+}
+const { src, alt, class: className } = Astro.props;
+---
+<img
+  src={src}
+  alt={alt}
+  class:list={["gallery-img", className]}
+  data-zoomable
+  loading="lazy"
+  decoding="async"
+/>

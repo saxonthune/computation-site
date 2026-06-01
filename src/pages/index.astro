@@ -33,9 +33,9 @@ const toc = {
 ---
 <Base title="Computation">
   <h1 class="font-heading text-5xl font-bold mb-3 tracking-tight text-center dark:text-dark-heading">Computation</h1>
-  <p class="text-center text-sm text-gray-400 dark:text-dark-muted mb-16 italic">Software Design, and Machine Software</p>
+  <p class="text-center text-sm text-black dark:text-dark-muted mb-16 italic">Software Design, and Machine Software</p>
 
-  <p class="text-sm text-gray-400 dark:text-dark-muted italic mb-10">Pages are being added over time. Placeholders are denoted with (·). Thank you for reading!</p>
+  <p class="text-sm text-black dark:text-dark-muted italic mb-10">Pages are being added over time. Placeholders are denoted with (·). Thank you for reading!</p>
 
   {Object.entries(toc).map(([section, entries]) => (
     <>
@@ -46,9 +46,9 @@ const toc = {
           if (page && !page.data.stub) {
             return <li><a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline">{title}</a></li>;
           } else if (page?.data.stub) {
-            return <li class="text-gray-400 dark:text-dark-muted">{title} <a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline text-xs">(·)</a></li>;
+            return <li class="text-black dark:text-dark-muted">{title} <a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline text-xs">(·)</a></li>;
           } else {
-            return <li class="text-gray-400 dark:text-dark-muted">{title}</li>;
+            return <li class="text-black dark:text-dark-muted">{title}</li>;
           }
         })}
       </ul>
@@ -58,7 +58,7 @@ const toc = {
   <hr class="my-6 border-gray-200 dark:border-gray-800" />
 
   <div class="flex items-center justify-center gap-4">
-    <p class="text-sm text-gray-400 dark:text-dark-muted">
+    <p class="text-sm text-black dark:text-dark-muted">
       <a href="/blog" class="text-accent-light dark:text-accent-dark hover:underline">Blog</a>
       <span class="ml-2">&middot;</span>
       <a href="https://github.com/saxonthune/computation-site" class="text-accent-light dark:text-accent-dark hover:underline ml-2">GitHub</a>

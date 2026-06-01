@@ -17,22 +17,22 @@ const toSlug = (entry: any) => {
 };
 ---
 <Base title="Blog — Computation">
-  <p class="text-xs text-gray-400 dark:text-dark-muted mb-8"><a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">&larr; contents</a></p>
+  <p class="text-xs text-black dark:text-dark-muted mb-8"><a href="/" class="hover:text-accent-light dark:hover:text-dark-heading">&larr; contents</a></p>
   <h1 class="font-heading text-4xl font-bold mb-10 tracking-tight dark:text-dark-heading">Blog</h1>
 
   <ul class="space-y-4">
     {dispatches.map((entry) => (
       <li>
         <a href={`/blog/${toSlug(entry)}`} class="text-accent-light dark:text-accent-dark hover:underline">{entry.data.title}</a>
-        <span class="text-sm text-gray-400 dark:text-dark-muted ml-2">{fmt(entry.data.date)}</span>
+        <span class="text-sm text-black dark:text-dark-muted ml-2">{fmt(entry.data.date)}</span>
       </li>
     ))}
   </ul>
 
   <hr class="my-8 border-gray-200 dark:border-gray-800" />
-  <div class="flex items-center gap-4 text-sm text-gray-400 dark:text-dark-muted">
-    <a href="/" class="hover:text-gray-600 dark:hover:text-dark-heading">main</a>
-    <a href="/feed.xml" class="hover:text-gray-600 dark:hover:text-dark-heading">rss</a>
+  <div class="flex items-center gap-4 text-sm text-black dark:text-dark-muted">
+    <a href="/" class="hover:text-accent-light dark:hover:text-dark-heading">main</a>
+    <a href="/feed.xml" class="hover:text-accent-light dark:hover:text-dark-heading">rss</a>
     <ThemeToggle />
   </div>
 </Base>

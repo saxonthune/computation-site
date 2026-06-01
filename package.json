@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev-host": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "astro build && aws s3 sync ./dist s3://computation-site --delete && aws cloudfront create-invalidation --distribution-id E1UAO9SUOKEU6U --paths '/*'"

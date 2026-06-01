@@ -1,0 +1,72 @@
+---
+// Site-wide image viewer. Include once per layout. Any `img[data-zoomable]`
+// becomes clickable: opens a native <dialog> — fullscreen-ish on mobile, a
+// large centered "expanded" view on desktop. When the clicked image belongs to
+// a `gallery`, the gallery's shared caption is shown and you can move between
+// its images: tap the outer thirds of the image (left = prev, right = next) or
+// use arrow keys. Tapping the center third — or anywhere outside the image —
+// closes, as does Esc. No dependencies.
+---
+<dialog id="lightbox" class="lightbox" aria-label="Image viewer">
+  <img id="lightbox-img" alt="" />
+  <p id="lightbox-caption" class="lightbox-caption" hidden></p>
+</dialog>
+<script>
+  const dlg = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const big = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const cap = document.getElementById('lightbox-caption') as HTMLParagraphElement | null;
+  if (dlg && big && cap) {
+    // The set of images currently navigable in the viewer, and where we are in
+    // it. A lone image (Figure) is a group of one; a gallery is its members.
+    let group: HTMLImageElement[] = [];
+    let index = 0;
+
+    function captionFor(el: HTMLImageElement) {
+      return el.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || '';
+    }
+
+    function show(i: number) {
+      index = (i + group.length) % group.length;
+      const el = group[index];
+      big!.src = el.currentSrc || el.src;
+      big!.alt = el.alt;
+      const text = captionFor(el);
+      cap!.textContent = text;
+      cap!.hidden = !text;
+    }
+
+    document.querySelectorAll<HTMLImageElement>('img[data-zoomable]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const fig = el.closest('.gallery-fig');
+        group = fig
+          ? Array.from(fig.querySelectorAll<HTMLImageElement>('img[data-zoomable]'))
+          : [el];
+        show(group.indexOf(el));
+        dlg.showModal();
+      });
+    });
+
+    // Tapping the outer thirds of the image navigates a gallery; the center
+    // third falls through to close. stopPropagation keeps a nav tap from also
+    // reaching the dialog's close handler.
+    big.addEventListener('click', (e) => {
+      if (group.length > 1) {
+        const rect = big.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        if (x < rect.width / 3) { show(index - 1); e.stopPropagation(); return; }
+        if (x > rect.width * 2 / 3) { show(index + 1); e.stopPropagation(); return; }
+      }
+    });
+
+    // Anywhere outside the image (backdrop, caption) or the image's center third
+    // closes the viewer.
+    dlg.addEventListener('click', () => dlg.close());
+
+    // Arrow keys move through a gallery on desktop.
+    dlg.addEventListener('keydown', (e) => {
+      if (group.length < 2) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    });
+  }
+</script>
