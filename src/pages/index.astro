@@ -1,69 +1,47 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import BlogPreview from '../components/BlogPreview.astro';
 
-const allPages = await getCollection('pages');
-const pageMap = Object.fromEntries(allPages.map(p => [p.data.permalink, p]));
+// One source for the link bar, rendered under the masthead and again in the
+// footer so a reader reaches the links without scrolling either direction.
+const contactLinks = [
+  { label: 'hi@saxon.zone', href: 'mailto:hi@saxon.zone' },
+  { label: 'GitHub', href: 'https://github.com/saxonthune' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/saxonthune' },
+];
 
-// Table of contents structure: [permalink, display title]
-const toc = {
-  intro: [
-    ['preface', 'Preface: Towards Software Design'],
-  ],
-  'I. Product, Software, AI': [
-    ['product-and-software', 'Product and Software'],
-    ['the-saaspocalypse', 'The SaaSpocalypse'],
-    ['what-is-ai', 'What is AI?'],
-    ['artifact-driven-development', 'Artifact Driven Development'],
-    ['good-code', 'Good Code'],
-  ],
-  'II. Spec Driven Development': [
-    ['two-sources-of-truth', 'Two Sources of Truth'],
-    ['specs-and-ai', 'Specs and AI'],
-    ['transformation-distillation-enrichment', 'Transformation, Distillation, Enrichment'],
-    ['code-maps', 'Code Maps'],
-  ],
-  'III. Software Design': [
-    ['the-software-designer', 'The Software Designer'],
-    ['meet-the-team', 'Meet the Team'],
-    ['craftsmanship', 'Craftsmanship'],
-  ],
-};
 ---
 <Base title="Computation">
   <h1 class="font-heading text-5xl font-bold mb-3 tracking-tight text-center dark:text-dark-heading">Computation</h1>
-  <p class="text-center text-sm text-black dark:text-dark-muted mb-16 italic">Software Design, and Machine Software</p>
+  <p class="text-center text-sm text-black dark:text-dark-muted mb-8 italic">Software Design, and Machine Software</p>
 
-  <p class="text-sm text-black dark:text-dark-muted italic mb-10">Pages are being added over time. Placeholders are denoted with (·). Thank you for reading!</p>
+  <nav class="flex items-center justify-center flex-wrap gap-x-2 gap-y-1 mb-12 text-sm" aria-label="Contact">
+    {contactLinks.map((link, i) => (
+      <>
+        {i > 0 && <span class="text-black dark:text-dark-muted">&middot;</span>}
+        <a href={link.href} class="text-accent-light dark:text-accent-dark hover:underline">{link.label}</a>
+      </>
+    ))}
+    <span class="text-black dark:text-dark-muted">&middot;</span>
+    <ThemeToggle />
+  </nav>
 
-  {Object.entries(toc).map(([section, entries]) => (
-    <>
-      {section !== 'intro' && <h2 class="font-heading text-2xl font-bold mb-6 dark:text-dark-heading">{section}</h2>}
-      <ul class="space-y-3 mb-14 pl-4">
-        {entries.map(([permalink, title]) => {
-          const page = pageMap[permalink];
-          if (page && !page.data.stub) {
-            return <li><a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline">{title}</a></li>;
-          } else if (page?.data.stub) {
-            return <li class="text-black dark:text-dark-muted">{title} <a href={`/${permalink}`} class="text-accent-light dark:text-accent-dark hover:underline text-xs">(·)</a></li>;
-          } else {
-            return <li class="text-black dark:text-dark-muted">{title}</li>;
-          }
-        })}
-      </ul>
-    </>
-  ))}
+  <section aria-labelledby="blog-heading" class="mb-12">
+    <h2 id="blog-heading" class="font-heading text-2xl font-bold mb-6 dark:text-dark-heading">From the Blog</h2>
+    <BlogPreview />
+  </section>
 
   <hr class="my-6 border-gray-200 dark:border-gray-800" />
 
-  <div class="flex items-center justify-center gap-4">
-    <p class="text-sm text-black dark:text-dark-muted">
-      <a href="/blog" class="text-accent-light dark:text-accent-dark hover:underline">Blog</a>
-      <span class="ml-2">&middot;</span>
-      <a href="https://github.com/saxonthune/computation-site" class="text-accent-light dark:text-accent-dark hover:underline ml-2">GitHub</a>
-      <span class="ml-2">&middot;</span>
+  <nav class="flex items-center justify-center flex-wrap gap-x-2 gap-y-1 text-sm" aria-label="Contact">
+    {contactLinks.map((link, i) => (
+      <>
+        {i > 0 && <span class="text-black dark:text-dark-muted">&middot;</span>}
+        <a href={link.href} class="text-accent-light dark:text-accent-dark hover:underline">{link.label}</a>
+      </>
+    ))}
+    <span class="text-black dark:text-dark-muted">&middot;</span>
     <ThemeToggle />
-    </p>
-  </div>
+  </nav>
 </Base>
