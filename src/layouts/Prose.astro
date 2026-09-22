@@ -22,8 +22,8 @@ const { title, backHref, backLabel } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
     <script is:inline>
-      // Default to dark unless the user has explicitly chosen light (matches Base.astro)
-      if (localStorage.getItem('theme') !== 'light') {
+      // Default to light unless the user has explicitly chosen dark (matches Base.astro)
+      if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.classList.add('dark');
       }
     </script>
